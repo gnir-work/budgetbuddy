@@ -1,0 +1,47 @@
+{
+  "name": "budgetbuddy",
+  "version": "1.0.0",
+  "description": "A centralized view on all of your incomes and expenses.",
+  "main": "dist/my-lib.cjs.js",
+  "module": "dist/my-lib.esm.js",
+  "browser": "dist/my-lib.umd.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "start": "npx ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gnir-work/budgetbuddy.git"
+  },
+  "keywords": [
+    "incomes",
+    "expenses",
+    "splunk",
+    "centeralized",
+    "bank",
+    "money",
+    "crawler",
+    "israel"
+  ],
+  "author": "gnir",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gnir-work/budgetbuddy/issues"
+  },
+  "homepage": "https://github.com/gnir-work/budgetbuddy#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "eslint": "^8.9.0",
+    "rollup": "^2.67.3",
+    "ts-node": "^10.5.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.5"
+  }
+}
