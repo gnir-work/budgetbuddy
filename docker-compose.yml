@@ -1,0 +1,21 @@
+version: "3.6"
+
+volumes:
+  splunk-var:
+  splunk-etc:
+
+services:
+  splunk:
+    image: splunk/splunk:latest
+    container_name: ${CONTAINER_NAME}
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_HEC_TOKEN=a61bb07f97764db881f373bd39f27e85
+      - SPLUNK_PASSWORD=12345678
+      - SPLUNK_LICENSE_URI=Free
+    ports:
+      - 8000:8000
+      - 8088:8088
+    volumes:
+      - splunk-var:/opt/splunk/var
+      - splunk-etc:/opt/splunk/etc
