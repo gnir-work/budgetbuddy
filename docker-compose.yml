@@ -11,7 +11,7 @@ services:
     environment:
       - SPLUNK_START_ARGS=--accept-license
       - SPLUNK_HEC_TOKEN=a61bb07f97764db881f373bd39f27e85
-      - SPLUNK_PASSWORD=12345678
+      - SPLUNK_PASSWORD=${PASSWORD}
       - SPLUNK_LICENSE_URI=Free
     ports:
       - 8000:8000
