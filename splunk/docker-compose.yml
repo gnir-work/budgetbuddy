@@ -19,3 +19,4 @@ services:
     volumes:
       - splunk-var:/opt/splunk/var
       - splunk-etc:/opt/splunk/etc
+      - /etc/localtime:/etc/localtime

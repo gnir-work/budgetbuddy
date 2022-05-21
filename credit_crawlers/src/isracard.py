@@ -1,8 +1,12 @@
-from typing import Dict
+from datetime import datetime
+from typing import Dict, Union
 
 from splunk_api import send_json
 import csv
 import click
+import datetime
+
+DATE_FORMAT = "%d/%m/%Y"
 
 
 @click.command
@@ -21,19 +25,23 @@ def upload_csv_to_splunk(csv_file_path: str, token: str):
         for row in csv_reader:
             data = _parse_row(row)
             if data:
-                send_json(data, token)
+                send_json(data["data"], data["timestamp"], token)
 
 
-def _parse_row(row: Dict[str, str]) -> Dict[str, str]:
+def _parse_row(row: Dict[str, str]) -> dict[str, Union[str,dict, int]]:
     if len(row.get("תאריך רכישה", "").replace(" ", "")) > 1:
         return {
-            "Price": row["סכום חיוב"],
-            "Business": row["שם בית עסק"]
-            .replace('"', "")
-            .replace("'", "")
-            .replace(" ", "_"),
-            "Date": row["תאריך רכישה"],
+            "data": {
+                "Price": row["סכום חיוב"],
+                "Business": row["שם בית עסק"]
+                    .replace('"', "")
+                    .replace("'", "")
+                    .replace(" ", "_"),
+                "Date": row["תאריך רכישה"],
+            },
+            "timestamp": datetime.datetime.strptime(row["תאריך רכישה"], DATE_FORMAT).timestamp()
         }
+
 
     else:
         return {}

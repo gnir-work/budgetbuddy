@@ -9,11 +9,11 @@ def _generate_headers(token: str) -> Dict[str, str]:
     return {"Authorization": AUTH_HEADER_FORMAT.format(token=token)}
 
 
-def send_json(data: dict, token: str):
+def send_json(data: dict, timestamp: int, token: str):
     response = requests.post(
         SPLUNK_URL,
         headers=_generate_headers(token),
-        json=dict(event=data),
+        json=dict(event=data, time=timestamp),
         verify=False,
     )
     response.raise_for_status()
