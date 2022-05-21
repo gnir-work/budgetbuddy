@@ -11,6 +11,19 @@
   </fieldset>
   <row>
     <panel>
+      <title>Current month expenses</title>
+      <single>
+        <search>
+          <query>index="bank" | stats sum(Price)</query>
+          <earliest>@mon</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
       <title>Expenses by business</title>
       <chart>
         <search>
