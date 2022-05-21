@@ -1,2 +1,6 @@
 ipython
 types-requests
+flake8
+black
+mypy
+ipdb

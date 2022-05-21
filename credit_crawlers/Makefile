@@ -11,7 +11,7 @@ ipython:
 	./venv/bin/ipython
 
 format:
-	./venv/bin/black src
+	./venv/bin/black src --line-length 120
 
 lint:
 	./venv/bin/flake8 src
