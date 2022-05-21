@@ -11,6 +11,7 @@
   </fieldset>
   <row>
     <panel>
+      <title>Expenses by business</title>
       <chart>
         <search>
           <query>index="bank"
@@ -19,7 +20,21 @@
           <latest>$field1.latest$</latest>
         </search>
         <option name="charting.chart">pie</option>
-        <option name="charting.drilldown">none</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Expenses per day</title>
+      <chart>
+        <search>
+          <query>index="bank"
+| timechart sum(Price) span=1d</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.drilldown">all</option>
         <option name="refresh.display">progressbar</option>
       </chart>
     </panel>
